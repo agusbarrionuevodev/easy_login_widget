@@ -86,17 +86,17 @@ class _EasyLoginWidgetState extends State<EasyLoginWidget> {
             SizedBox(height: widget.inputSpacing),
             widget.buttonWidgetFirstOrLast
                 ? Column(
-              children: [
-                buildButton(),
-                optionalWidgets(),
-              ],
-            )
+                    children: [
+                      buildButton(),
+                      optionalWidgets(),
+                    ],
+                  )
                 : Column(
-              children: [
-                optionalWidgets(),
-                buildButton(),
-              ],
-            ),
+                    children: [
+                      optionalWidgets(),
+                      buildButton(),
+                    ],
+                  ),
           ],
         ),
       ),
@@ -108,41 +108,41 @@ class _EasyLoginWidgetState extends State<EasyLoginWidget> {
       children: [
         widget.rememberMeWidgetVisibility
             ? Row(
-          children: [
-            Checkbox(
-              activeColor: widget.checkBoxActiveColor ?? Colors.blue,
-              checkColor: widget.checkBoxCheckColor ?? Colors.white,
-              value: checkboxValue,
-              onChanged: (value) {
-                checkboxValue = value!;
-                setState(() {});
-              },
-            ),
-            Text(widget.rememberMeText ?? ' ',
-                style: widget.forgotPasswordStyle),
-          ],
-        )
+                children: [
+                  Checkbox(
+                    activeColor: widget.checkBoxActiveColor ?? Colors.blue,
+                    checkColor: widget.checkBoxCheckColor ?? Colors.white,
+                    value: checkboxValue,
+                    onChanged: (value) {
+                      checkboxValue = value!;
+                      setState(() {});
+                    },
+                  ),
+                  Text(widget.rememberMeText ?? ' ',
+                      style: widget.forgotPasswordStyle),
+                ],
+              )
             : const SizedBox.shrink(),
         const Spacer(),
         widget.forgotPasswordWidgetVisibility
             ? Align(
-          alignment: Alignment.centerRight,
-          child: TextButton(
-            style: ButtonStyle(
-              overlayColor: WidgetStateProperty.all(Colors.transparent),
-            ),
-            onPressed: widget.onPressedForgotPassword,
-            child: Text(
-              widget.forgotPasswordText!,
-              style: widget.forgotPasswordStyle ??
-                  const TextStyle(
-                    color: Colors.black,
-                    fontSize: 14,
-                    decoration: TextDecoration.underline,
+                alignment: Alignment.centerRight,
+                child: TextButton(
+                  style: ButtonStyle(
+                    overlayColor: WidgetStateProperty.all(Colors.transparent),
                   ),
-            ),
-          ),
-        )
+                  onPressed: widget.onPressedForgotPassword,
+                  child: Text(
+                    widget.forgotPasswordText!,
+                    style: widget.forgotPasswordStyle ??
+                        const TextStyle(
+                          color: Colors.black,
+                          fontSize: 14,
+                          decoration: TextDecoration.underline,
+                        ),
+                  ),
+                ),
+              )
             : const SizedBox.shrink()
       ],
     );
@@ -214,15 +214,15 @@ class _EasyLoginWidgetState extends State<EasyLoginWidget> {
             controller: widget.passwordController,
             obscureText: visible,
             decoration: widget.passwordInputDecoration?.copyWith(
-              suffixIcon: IconButton(
-                  onPressed: () {
-                    visible = !visible;
-                    setState(() {});
-                  },
-                  icon: visible
-                      ? const Icon(Icons.visibility_off)
-                      : const Icon(Icons.visibility)),
-            ) ??
+                  suffixIcon: IconButton(
+                      onPressed: () {
+                        visible = !visible;
+                        setState(() {});
+                      },
+                      icon: visible
+                          ? const Icon(Icons.visibility_off)
+                          : const Icon(Icons.visibility)),
+                ) ??
                 InputDecoration(
                   border: const OutlineInputBorder(),
                   hintText: 'Enter your password...',

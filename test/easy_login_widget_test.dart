@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:generic_login/generic_login.dart';
+
 void main() {
   testWidgets('CustomLogin widget renders correctly',
       (WidgetTester tester) async {
