@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:generic_login/generic_login.dart';
+import 'package:easy_login_widget/easy_login_widget.dart';
 
 void main() {
-  testWidgets('CustomLogin widget renders correctly',
+  testWidgets('EasyLoginWidget renders correctly',
       (WidgetTester tester) async {
     final formKey = GlobalKey<FormState>();
     final userNameController = TextEditingController();
@@ -11,7 +11,7 @@ void main() {
 
     await tester.pumpWidget(MaterialApp(
       home: Material(
-        child: CustomLogin(
+        child: EasyLoginWidget(
           formKey: formKey,
           userNameController: userNameController,
           passwordController: passwordController,
@@ -33,7 +33,7 @@ void main() {
 
     await tester.pumpWidget(MaterialApp(
       home: Material(
-        child: CustomLogin(
+        child: EasyLoginWidget(
           formKey: formKey,
           userNameController: userNameController,
           passwordController: passwordController,
@@ -63,7 +63,7 @@ void main() {
 
     await tester.pumpWidget(MaterialApp(
       home: Material(
-        child: CustomLogin(
+        child: EasyLoginWidget(
           formKey: formKey,
           userNameController: userNameController,
           passwordController: passwordController,
@@ -82,7 +82,7 @@ void main() {
       (WidgetTester tester) async {
     await tester.pumpWidget(MaterialApp(
       home: Material(
-        child: CustomLogin(
+        child: EasyLoginWidget(
           formKey: GlobalKey<FormState>(),
           userNameController: TextEditingController(),
           passwordController: TextEditingController(),
@@ -106,7 +106,7 @@ void main() {
 
     await tester.pumpWidget(MaterialApp(
       home: Material(
-        child: CustomLogin(
+        child: EasyLoginWidget(
           formKey: GlobalKey<FormState>(),
           userNameController: TextEditingController(),
           passwordController: TextEditingController(),

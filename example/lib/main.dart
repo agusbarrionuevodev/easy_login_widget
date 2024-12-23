@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:easy_login_widget/easy_login_widget.dart';
-
 void main() {
   runApp(const MyApp());
 }
@@ -10,8 +9,8 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: const MyHomePage(title: 'Easy Login Example'),
+    return const MaterialApp(
+      home: MyHomePage(),
     );
   }
 }
@@ -27,7 +26,7 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      child: Center(
+      body: Center(
         child: EasyLoginWidget(
           formKey: GlobalKey<FormState>(),
           buttonWidgetFirstOrLast: true,

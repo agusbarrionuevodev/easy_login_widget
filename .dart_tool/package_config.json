@@ -158,13 +158,13 @@
       "languageVersion": "3.3"
     },
     {
-      "name": "generic_login",
+      "name": "easy_login_widget",
       "rootUri": "../",
       "packageUri": "lib/",
       "languageVersion": "3.5"
     }
   ],
-  "generated": "2024-12-20T17:19:54.098675Z",
+  "generated": "2024-12-23T11:26:09.278678Z",
   "generator": "pub",
   "generatorVersion": "3.5.3",
   "flutterRoot": "file:///Users/AgustinBarrionuevo/fvm/versions/3.24.3",
