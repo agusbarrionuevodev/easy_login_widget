@@ -97,6 +97,27 @@ class _EasyLoginWidgetState extends State<EasyLoginWidget> {
                       buildButton(),
                     ],
                   ),
+            SizedBox(height: widget.inputSpacing),
+            widget.forgotPasswordWidgetVisibility
+                ? Align(
+              alignment: Alignment.center,
+              child: TextButton(
+                style: ButtonStyle(
+                  overlayColor: WidgetStateProperty.all(Colors.transparent),
+                ),
+                onPressed: widget.onPressedForgotPassword,
+                child: Text(
+                  widget.forgotPasswordText!,
+                  style: widget.forgotPasswordStyle ??
+                      const TextStyle(
+                        color: Colors.black,
+                        fontSize: 14,
+                        decoration: TextDecoration.underline,
+                      ),
+                ),
+              ),
+            )
+                : const SizedBox.shrink()
           ],
         ),
       ),
@@ -104,9 +125,7 @@ class _EasyLoginWidgetState extends State<EasyLoginWidget> {
   }
 
   Row optionalWidgets() {
-    return Row(
-      children: [
-        widget.rememberMeWidgetVisibility
+    return widget.rememberMeWidgetVisibility
             ? Row(
                 children: [
                   Checkbox(
@@ -122,30 +141,7 @@ class _EasyLoginWidgetState extends State<EasyLoginWidget> {
                       style: widget.forgotPasswordStyle),
                 ],
               )
-            : const SizedBox.shrink(),
-        const Spacer(),
-        widget.forgotPasswordWidgetVisibility
-            ? Align(
-                alignment: Alignment.centerRight,
-                child: TextButton(
-                  style: ButtonStyle(
-                    overlayColor: WidgetStateProperty.all(Colors.transparent),
-                  ),
-                  onPressed: widget.onPressedForgotPassword,
-                  child: Text(
-                    widget.forgotPasswordText!,
-                    style: widget.forgotPasswordStyle ??
-                        const TextStyle(
-                          color: Colors.black,
-                          fontSize: 14,
-                          decoration: TextDecoration.underline,
-                        ),
-                  ),
-                ),
-              )
-            : const SizedBox.shrink()
-      ],
-    );
+            : const SizedBox.shrink();
   }
 
   Column buildUserNameInput() {
