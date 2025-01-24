@@ -72,9 +72,7 @@ class _EasyLoginWidgetState extends State<EasyLoginWidget> {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      minimum: const EdgeInsets.all(50),
-      child: Form(
+    return Form(
         key: widget.formKey,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
@@ -120,8 +118,7 @@ class _EasyLoginWidgetState extends State<EasyLoginWidget> {
                 : const SizedBox.shrink()
           ],
         ),
-      ),
-    );
+      );
   }
 
   Row optionalWidgets() {

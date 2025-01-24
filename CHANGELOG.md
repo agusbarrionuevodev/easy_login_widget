@@ -5,3 +5,6 @@
 ## 1.0.1
 * Solved a bug where widgets collided with each other 
 * Changed the order of optional widgets
+
+## 1.1.0
+* Eliminated safe area widget to allow user to customize the widget as they want
