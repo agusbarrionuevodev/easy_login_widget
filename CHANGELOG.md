@@ -8,3 +8,7 @@
 
 ## 1.1.0
 * Eliminated safe area widget to allow user to customize the widget as they want
+
+## 1.2.0
+
+* Solved inconsistency with in version management
