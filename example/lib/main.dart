@@ -23,6 +23,7 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -31,6 +32,9 @@ class _MyHomePageState extends State<MyHomePage> {
           formKey: GlobalKey<FormState>(),
           buttonWidgetFirstOrLast: true,
           onPressedForgotPassword: () {},
+          onPressed: () {},
+          userNameController: TextEditingController(),
+          passwordController: TextEditingController(),
           forgotPasswordStyle: const TextStyle(color: Colors.blue),
           forgotPasswordWidgetVisibility: true,
           rememberMeWidgetVisibility: true,

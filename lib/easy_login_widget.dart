@@ -86,12 +86,14 @@ class _EasyLoginWidgetState extends State<EasyLoginWidget> {
                 ? Column(
                     children: [
                       buildButton(),
-                      optionalWidgets(),
+                      widget.rememberMeWidgetVisibility
+                          ? optionalWidgets() : const SizedBox.shrink(),
                     ],
                   )
                 : Column(
                     children: [
-                      optionalWidgets(),
+                      widget.rememberMeWidgetVisibility
+                          ? optionalWidgets() : const SizedBox.shrink(),
                       buildButton(),
                     ],
                   ),
@@ -122,8 +124,7 @@ class _EasyLoginWidgetState extends State<EasyLoginWidget> {
   }
 
   Row optionalWidgets() {
-    return widget.rememberMeWidgetVisibility
-            ? Row(
+    return Row(
                 children: [
                   Checkbox(
                     activeColor: widget.checkBoxActiveColor ?? Colors.blue,
@@ -137,8 +138,7 @@ class _EasyLoginWidgetState extends State<EasyLoginWidget> {
                   Text(widget.rememberMeText ?? ' ',
                       style: widget.forgotPasswordStyle),
                 ],
-              )
-            : const SizedBox.shrink();
+              );
   }
 
   Column buildUserNameInput() {
