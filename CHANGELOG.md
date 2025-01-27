@@ -17,3 +17,7 @@
 
 * Added a new feature to allow the user to customize the functionality of the remember me widget
 * Added the possibility to customize the text of the remember me widget
+
+## 1.4.0
+
+* Added a new feature to allow users to disable sign in button at will

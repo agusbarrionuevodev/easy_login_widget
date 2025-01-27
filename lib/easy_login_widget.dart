@@ -5,7 +5,7 @@ class EasyLoginWidget extends StatefulWidget {
   final InputDecoration? passwordInputDecoration;
   final TextEditingController userNameController;
   final TextEditingController passwordController;
-  final Function() onPressed;
+  final Function()? onPressed;
   final Function(bool)? onPressedCheckbox;
   final Function()? onPressedForgotPassword;
   final Function(String)? onChangedUsername;
@@ -38,7 +38,6 @@ class EasyLoginWidget extends StatefulWidget {
     required this.formKey,
     required this.userNameController,
     required this.passwordController,
-    required this.onPressed,
     required this.buttonWidgetFirstOrLast,
     this.userNameInputDecoration,
     this.passwordInputDecoration,
@@ -66,6 +65,7 @@ class EasyLoginWidget extends StatefulWidget {
     this.checkBoxValue,
     this.rememberMeStyle,
     this.onPressedCheckbox,
+    this.onPressed,
   });
 
   @override
@@ -176,8 +176,7 @@ class _EasyLoginWidgetState extends State<EasyLoginWidget> {
   }
 
   SizedBox buildButton() {
-    bool areValidationsEnabled =
-        widget.passwordValidator != null && widget.userNameValidator != null;
+    final isDisabled = widget.onPressed == null;
     return SizedBox(
       width: widget.buttonWidth ?? double.infinity,
       height: widget.buttonHeigth ?? 40,
@@ -189,10 +188,7 @@ class _EasyLoginWidgetState extends State<EasyLoginWidget> {
                 borderRadius: BorderRadius.circular(10),
               ),
             ),
-        onPressed: () {
-          if (areValidationsEnabled) widget.formKey.currentState?.validate();
-          widget.onPressed();
-        },
+        onPressed: isDisabled ? null : widget.onPressed,
         child: Text(widget.buttonText, style: widget.buttonTextStyle),
       ),
     );

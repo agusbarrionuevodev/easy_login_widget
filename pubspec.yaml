@@ -1,6 +1,6 @@
 name: easy_login_widget
 description: 'EasyLoginWidget is a customizable flutter login widget, with responsive design for mobile and web. Its a highly customizable widget that allows you to create a login form with a few lines of code.'
-version: 1.3.0
+version: 1.4.0
 repository: https://github.com/agusbarrionuevodev/easy_login_widget.git
 
 environment:

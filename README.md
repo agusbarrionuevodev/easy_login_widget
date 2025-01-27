@@ -23,7 +23,7 @@ To use this package you will have to install it and import it in your project. A
 
 ```yaml 
 dependencies:
-  easy_login_widget: ^1.0.0
+  easy_login_widget: ^1.4.0
 ```
 
 ```dart
@@ -75,8 +75,6 @@ class _MyHomePageState extends State<MyHomePage> {
           value == null || value.isEmpty ? 'Required' : null,
           passwordValidator: (value) =>
           value == null || value.isEmpty ? 'Required' : null,
-          rememberMeText: 'Remember me',
-          rememberMeWidgetVisibility: true,
           forgotPasswordWidgetVisibility: true,
           forgotPasswordText: 'Forgot password',
           inputSpacing: 10,
