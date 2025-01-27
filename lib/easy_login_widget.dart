@@ -6,6 +6,7 @@ class EasyLoginWidget extends StatefulWidget {
   final TextEditingController userNameController;
   final TextEditingController passwordController;
   final Function() onPressed;
+  final Function(bool)? onPressedCheckbox;
   final Function()? onPressedForgotPassword;
   final Function(String)? onChangedUsername;
   final Function(String)? onChangedPassword;
@@ -22,6 +23,7 @@ class EasyLoginWidget extends StatefulWidget {
   final String? forgotPasswordText;
   final TextStyle? forgotPasswordStyle;
   final TextStyle? buttonTextStyle;
+  final TextStyle? rememberMeStyle;
   final String? userNameInputLabel;
   final String? passwordInputLabel;
   final bool buttonWidgetFirstOrLast;
@@ -29,6 +31,7 @@ class EasyLoginWidget extends StatefulWidget {
   final double? inputSpacing;
   final Color? checkBoxActiveColor;
   final Color? checkBoxCheckColor;
+  final bool? checkBoxValue;
 
   const EasyLoginWidget({
     super.key,
@@ -60,6 +63,9 @@ class EasyLoginWidget extends StatefulWidget {
     this.inputSpacing = 0,
     this.checkBoxActiveColor,
     this.checkBoxCheckColor,
+    this.checkBoxValue,
+    this.rememberMeStyle,
+    this.onPressedCheckbox,
   });
 
   @override
@@ -68,77 +74,79 @@ class EasyLoginWidget extends StatefulWidget {
 
 class _EasyLoginWidgetState extends State<EasyLoginWidget> {
   bool visible = true;
-  bool checkboxValue = false;
+
+  @override
+  void initState() {
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
     return Form(
-        key: widget.formKey,
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            buildUserNameInput(),
-            SizedBox(height: widget.inputSpacing),
-            buildPasswordInput(),
-            SizedBox(height: widget.inputSpacing),
-            widget.buttonWidgetFirstOrLast
-                ? Column(
-                    children: [
-                      buildButton(),
-                      widget.rememberMeWidgetVisibility
-                          ? optionalWidgets() : const SizedBox.shrink(),
-                    ],
-                  )
-                : Column(
-                    children: [
-                      widget.rememberMeWidgetVisibility
-                          ? optionalWidgets() : const SizedBox.shrink(),
-                      buildButton(),
-                    ],
-                  ),
-            SizedBox(height: widget.inputSpacing),
-            widget.forgotPasswordWidgetVisibility
-                ? Align(
-              alignment: Alignment.center,
-              child: TextButton(
-                style: ButtonStyle(
-                  overlayColor: WidgetStateProperty.all(Colors.transparent),
-                ),
-                onPressed: widget.onPressedForgotPassword,
-                child: Text(
-                  widget.forgotPasswordText!,
-                  style: widget.forgotPasswordStyle ??
-                      const TextStyle(
-                        color: Colors.black,
-                        fontSize: 14,
-                        decoration: TextDecoration.underline,
-                      ),
-                ),
+      key: widget.formKey,
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          buildUserNameInput(),
+          SizedBox(height: widget.inputSpacing),
+          buildPasswordInput(),
+          SizedBox(height: widget.inputSpacing),
+          widget.buttonWidgetFirstOrLast
+              ? Column(
+            children: [
+              buildButton(),
+              widget.rememberMeWidgetVisibility
+                  ? checkBox()
+                  : const SizedBox.shrink(),
+            ],
+          )
+              : Column(
+            children: [
+              widget.rememberMeWidgetVisibility
+                  ? checkBox()
+                  : const SizedBox.shrink(),
+              buildButton(),
+            ],
+          ),
+          SizedBox(height: widget.inputSpacing),
+          widget.forgotPasswordWidgetVisibility
+              ? Align(
+            alignment: Alignment.center,
+            child: TextButton(
+              style: ButtonStyle(
+                overlayColor: WidgetStateProperty.all(Colors.transparent),
               ),
-            )
-                : const SizedBox.shrink()
-          ],
-        ),
-      );
+              onPressed: widget.onPressedForgotPassword,
+              child: Text(
+                widget.forgotPasswordText!,
+                style: widget.forgotPasswordStyle ??
+                    const TextStyle(
+                      color: Colors.black,
+                      fontSize: 14,
+                      decoration: TextDecoration.underline,
+                    ),
+              ),
+            ),
+          )
+              : const SizedBox.shrink()
+        ],
+      ),
+    );
   }
 
-  Row optionalWidgets() {
+  Row checkBox() {
     return Row(
-                children: [
-                  Checkbox(
-                    activeColor: widget.checkBoxActiveColor ?? Colors.blue,
-                    checkColor: widget.checkBoxCheckColor ?? Colors.white,
-                    value: checkboxValue,
-                    onChanged: (value) {
-                      checkboxValue = value!;
-                      setState(() {});
-                    },
-                  ),
-                  Text(widget.rememberMeText ?? ' ',
-                      style: widget.forgotPasswordStyle),
-                ],
-              );
+      children: [
+        Checkbox(
+          activeColor: widget.checkBoxActiveColor ?? Colors.blue,
+          checkColor: widget.checkBoxCheckColor ?? Colors.white,
+          value: widget.checkBoxValue,
+          onChanged: (value) => widget.onPressedCheckbox?.call(value!),
+        ),
+        Text(widget.rememberMeText ?? ' ', style: widget.rememberMeStyle),
+      ],
+    );
   }
 
   Column buildUserNameInput() {
@@ -207,15 +215,15 @@ class _EasyLoginWidgetState extends State<EasyLoginWidget> {
             controller: widget.passwordController,
             obscureText: visible,
             decoration: widget.passwordInputDecoration?.copyWith(
-                  suffixIcon: IconButton(
-                      onPressed: () {
-                        visible = !visible;
-                        setState(() {});
-                      },
-                      icon: visible
-                          ? const Icon(Icons.visibility_off)
-                          : const Icon(Icons.visibility)),
-                ) ??
+              suffixIcon: IconButton(
+                  onPressed: () {
+                    visible = !visible;
+                    setState(() {});
+                  },
+                  icon: visible
+                      ? const Icon(Icons.visibility_off)
+                      : const Icon(Icons.visibility)),
+            ) ??
                 InputDecoration(
                   border: const OutlineInputBorder(),
                   hintText: 'Enter your password...',

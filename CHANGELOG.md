@@ -12,3 +12,8 @@
 ## 1.2.0
 
 * Solved inconsistency with in version management
+
+## 1.3.0
+
+* Added a new feature to allow the user to customize the functionality of the remember me widget
+* Added the possibility to customize the text of the remember me widget

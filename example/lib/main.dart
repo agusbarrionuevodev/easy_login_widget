@@ -23,7 +23,7 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  
+  bool checkBoxValue = false;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -45,6 +45,12 @@ class _MyHomePageState extends State<MyHomePage> {
           inputSpacing: 10,
           checkBoxActiveColor: Colors.blue,
           checkBoxCheckColor: Colors.white,
+          checkBoxValue: checkBoxValue,
+          onPressedCheckbox: (value) {
+            checkBoxValue = value;
+            setState(() {});
+          },
+          rememberMeStyle: const TextStyle(color: Colors.blue),
         ),
       ),
     );
